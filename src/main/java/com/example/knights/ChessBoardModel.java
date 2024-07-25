@@ -72,9 +72,9 @@ public class ChessBoardModel {
     public void initializeBoard(List<PieceConfiguration> pieceConfigurations) {
         // Iterate through the list of piece configurations and place pieces on the board
         for (PieceConfiguration config : pieceConfigurations) {
-            int x = config.x();
-            int y = config.y();
-            PieceType type = config.pieceType();
+            int x = config.getX();
+            int y = config.getY();
+            PieceType type = config.getPieceType();
 
             // Ensure the coordinates are within the bounds of the board
             if (x >= 0 && x < size && y >= 0 && y < size) {
@@ -93,6 +93,27 @@ public class ChessBoardModel {
     }
 
     // Helper class to hold piece configuration
-    public record PieceConfiguration(int x, int y, PieceType pieceType) {
+    public static class PieceConfiguration {
+        private final int x;
+        private final int y;
+        private final PieceType pieceType;
+
+        public PieceConfiguration(int x, int y, PieceType pieceType) {
+            this.x = x;
+            this.y = y;
+            this.pieceType = pieceType;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public PieceType getPieceType() {
+            return pieceType;
+        }
     }
 }
