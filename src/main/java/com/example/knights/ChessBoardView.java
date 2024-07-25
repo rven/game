@@ -20,9 +20,9 @@ public class ChessBoardView {
 
     private final ImageView[][] pieceViews; // Add this to keep track of piece views
 
-    public ChessBoardView() {
+    public ChessBoardView(int size) {
         board = new AnchorPane();
-        pieceViews = new ImageView[8][8]; // Initialize the array
+        pieceViews = new ImageView[size][size]; // Initialize the array
 
         // Load images
         queenImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/queen.png")));
@@ -32,8 +32,8 @@ public class ChessBoardView {
         Image playerImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/player.png")));
 
         // Create the board
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
                 Rectangle tile = new Rectangle(TILE_SIZE, TILE_SIZE);
                 tile.setFill((row + col) % 2 == 0 ? Color.WHITE : Color.GRAY);
                 tile.setLayoutX(col * TILE_SIZE);
