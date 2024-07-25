@@ -59,7 +59,7 @@ public class ChessBoardModel {
         if (x < 0 || x >= size || y < 0 || y >= size) {
             return false;
         }
-        return board[x][y] == null || board[x][y].type != PieceType.LIGHTHOUSE;
+        return board[x][y] == null || board[x][y].type == null;
     }
 
     public void switchLighthouseDirection() {
