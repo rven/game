@@ -56,7 +56,10 @@ public class ChessBoardModel {
     }
 
     private boolean isValidPosition(int x, int y) {
-        return x >= 0 && x < size && y >= 0 && y < size;
+        if (x < 0 || x >= size || y < 0 || y >= size) {
+            return false;
+        }
+        return board[x][y] == null || board[x][y].type != PieceType.LIGHTHOUSE;
     }
 
     public void switchLighthouseDirection() {
